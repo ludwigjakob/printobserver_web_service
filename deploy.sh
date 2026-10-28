@@ -3,7 +3,7 @@
 NAME="printobserver_web_service"
 PORT="8000"
 
-echo "🔍 Stoppe und lösche alten Container (falls vorhanden)..."
+echo "🔍 Entferne alten Container..."
 docker rm -f $NAME 2>/dev/null
 
 echo "🔨 Baue neues Docker-Image..."
@@ -15,12 +15,12 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "🚀 Starte neuen Container..."
-docker run -d --name $NAME -p $PORT:$PORT $NAME
+docker run -d --restart=always --name $NAME -p $PORT:$PORT $NAME
 
 if [ $? -ne 0 ]; then
     echo "❌ Container konnte nicht gestartet werden!"
     exit 1
 fi
 
-echo "📜 Zeige Logs an..."
+echo "📜 Logs:"
 docker logs -f $NAME
