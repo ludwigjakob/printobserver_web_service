@@ -95,7 +95,18 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="temp">{{ temperature }}°C</div>
+            <div class="temp">
+
+                {% if camera_status.status == "running" %}
+                    🟢 Online
+                {% else %}
+                    🔴 Offline
+                {% endif %}
+
+            </div>
+            <div class="temp">
+                {{ temperature }}°C
+            </div>
         </div>
 
         <div class="card">
