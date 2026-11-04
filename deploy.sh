@@ -15,7 +15,13 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "🚀 Starte neuen Container..."
-docker run -d --restart=always --name $NAME -p $PORT:$PORT $NAME
+docker run \
+    -d \
+    --restart=always \
+    --name $NAME \
+    -p $PORT:$PORT \
+    -v /home/printobserver/data:/data \
+    $NAME
 
 if [ $? -ne 0 ]; then
     echo "❌ Container konnte nicht gestartet werden!"

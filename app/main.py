@@ -19,7 +19,7 @@ async def index(request: Request):
 
 @app.get("/image")
 async def image():
-    return FileResponse("app/static/example.jpg")
+    return FileResponse("/data/camera/latest/latest.jpg")
 
 @app.post("/shutdown")
 async def shutdown():
