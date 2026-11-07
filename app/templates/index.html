@@ -121,6 +121,12 @@
     </div>
 
     <script>
+        const cameraImage = document.querySelector(".image-wrapper img");
+
+        setInterval(() => {
+            cameraImage.src = `/image?t=${Date.now()}`;
+        }, 5000);
+
         function shutdown() {
             if (!confirm("Wirklich Shutdown-Signal senden?")) {
                 return;
